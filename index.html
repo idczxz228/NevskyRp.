@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NevskyRP — Официальные Правила Сервера</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0c10;
+            --bg-card: rgba(18, 22, 31, 0.75);
+            --bg-card-hover: rgba(26, 32, 46, 0.9);
+            --accent: #00e5ff;
+            --accent-glow: rgba(0, 229, 255, 0.35);
+            --danger: #ff3366;
+            --text-main: #f0f4f8;
+            --text-muted: #8a99ad;
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 229, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(255, 51, 102, 0.04) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 12, 16, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 25px;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+            text-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 35px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 550px;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 25px 16px 55px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        /* --- Quick Nav Filter --- */
+        .category-filter {
+            max-width: 1300px;
+            margin: -30px auto 40px;
+            padding: 0 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            color: #0a0c10;
+            font-weight: 700;
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* --- Rules Section --- */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto 80px;
+            padding: 0 25px;
+        }
+
+        .article-block {
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+        }
+
+        .article-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .article-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 20px;
+        }
+
+        .rule-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 229, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .rule-card:hover::before {
+            opacity: 1;
+        }
+
+        .rule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .rule-num {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--accent);
+        }
+
+        .rule-text {
+            font-size: 15px;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        .rule-penalty {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            color: #ff6b8b;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            align-self: flex-start;
+        }
+
+        /* --- Modal for Details / Copy --- */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            box-shadow: 0 5px 20px var(--accent-glow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #06070a;
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 16px; }
+            .rules-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; } /* Можно развернуть в мобильное меню при желании */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">NEVSKY<span>RP</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#art1" class="nav-link">Базовые правила</a></li>
+                    <li><a href="#art3" class="nav-link">Полиция</a></li>
+                    <li><a href="#art6" class="nav-link">ПДД</a></li>
+                    <li><a href="#art7" class="nav-link">Зеленая Зона</a></li>
+                    <li><a href="#art13" class="nav-link">Оружие</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Свод Правил NevskyRP</h1>
+        <p>Изучите регламент нашего сервера для комфортной и качественной RolePlay игры.</p>
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Поиск по термину или названию правила (например, DM, SK, ПДД)...">
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <div class="category-filter">
+        <button class="filter-btn active" data-filter="all">Все статьи</button>
+        <button class="filter-btn" data-filter="art1">RP-термины</button>
+        <button class="filter-btn" data-filter="art2">Общение и Уход</button>
+        <button class="filter-btn" data-filter="art3">Полиция</button>
+        <button class="filter-btn" data-filter="art4">Скины</button>
+        <button class="filter-btn" data-filter="art5">Администрация</button>
+        <button class="filter-btn" data-filter="art6">ПДД</button>
+        <button class="filter-btn" data-filter="art7">Зеленая Зона</button>
+        <button class="filter-btn" data-filter="art8">Похищения</button>
+        <button class="filter-btn" data-filter="art9">Отмычки</button>
+        <button class="filter-btn" data-filter="art10">КПП</button>
+        <button class="filter-btn" data-filter="art11">Процессуальный кодекс</button>
+        <button class="filter-btn" data-filter="art12">Тяжкие преступления</button>
+        <button class="filter-btn" data-filter="art13">Оружие</button>
+    </div>
+
+    <!-- Main Rules Container -->
+    <main class="container">
+
+        <!-- Статья 1 -->
+        <div class="article-block" id="art1" data-category="art1">
+            <h2 class="article-title"><i class="fa-solid fa-shield-halved"></i> Статья 1. RP-термины и правила боя</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.1. DM (Deathmatch)</span></div>
+                        <div class="rule-text">Убийство или нанесение урона без IC-причины.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Кик / Бан от 1 до 3 дней</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.2. DB (DriveBy)</span></div>
+                        <div class="rule-text">Намеренный таран или наезд на игроков автомобилем без причинения IC-логики.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Кик / Бан на 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.3. MG (Metagaming)</span></div>
+                        <div class="rule-text">Использование OOC-информации (Discord, никнеймы, стримы) в IC-процессе.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан от 1 до 3 дней</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.4. PG (Powergaming)</span></div>
+                        <div class="rule-text">Преувеличение возможностей своего персонажа (например, 1 против 3 с оружием).</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Кик / Бан на 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.5. SK (Spawn Kill)</span></div>
+                        <div class="rule-text">Убийство или нападки на спавнах (больница, спавн гражданских, участок).</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан от 1 до 5 дней</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.6. TK (Team Kill)</span></div>
+                        <div class="rule-text">Убийство или урон игрокам своей фракции.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Увольнение / Бан 1–3 дня</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.7. RK (Revenge Kill)</span></div>
+                        <div class="rule-text">Возврат на место смерти в течение 10 минут с целью мести.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Кик / Бан на 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.8. NonRP</span></div>
+                        <div class="rule-text">Поведение, противоречащее логике реальной жизни и роли персонажа.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Кик / Бан на 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.9. CK (Character Kill)</span></div>
+                        <div class="rule-text">Полное убийство персонажа (осуществляется с согласия Администрации).</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-info-circle"></i> С согласия адм.</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.10. Repeat Kill</span></div>
+                        <div class="rule-text">Повторное возвращение на место смерти после RK.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан от 1 до 3 дней</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.11. FF (Friendly Fire)</span></div>
+                        <div class="rule-text">Нанесение урона своему софракционцу без убийства.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Выговор / Кик</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.12. BH (BunnyHop)</span></div>
+                        <div class="rule-text">Бег с прыжками для ускорения во время RP процесса.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Кик</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.13. Багоюз</span></div>
+                        <div class="rule-text">Использование абузов, ошибок игры или сбивов анимаций для преимущества.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 30 дней / Перманентно</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">1.14. Читы / Софт</span></div>
+                        <div class="rule-text">Использование любых сторонних вредоносных программ и софтов.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Перманентный бан</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 2 -->
+        <div class="article-block" id="art2" data-category="art2">
+            <h2 class="article-title"><i class="fa-solid fa-comments"></i> Статья 2. Общение и уход от RP</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">2.1. OOC в IC</span></div>
+                        <div class="rule-text">Сообщения из реала в IC-чат без Slash (//) в начале предложения.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Мут 10–20 мин / Кик</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">2.2. RP Quit</span></div>
+                        <div class="rule-text">Выход из игры, АФК или Reset во время погони, задержания или RP действия.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан от 1 до 3 дней</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">2.3. Музыка в Voice</span></div>
+                        <div class="rule-text">Включение музыки в голосовой чат (Запрещено в ЗЗ, а также без разрешения администрации и согласия игроков).</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Мут 30–60 мин / Кик</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">2.4. Изменение голоса</span></div>
+                        <div class="rule-text">Использование Soundpad и постороннего софта для создания помех и стонов.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Мут 30–120 мин / Бан 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">2.5. Неадекватность</span></div>
+                        <div class="rule-text">Оскорбление родных, нацизм, токсичность, розжиг межнациональной розни.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Мут 60–120 мин / Бан 3–7 дней</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">2.6. Оск. родни</span></div>
+                        <div class="rule-text">Оскорбление родственников игроков в любой форме.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан на 3–7 дней</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 3 -->
+        <div class="article-block" id="art3" data-category="art3">
+            <h2 class="article-title"><i class="fa-solid fa-handcuffs"></i> Статья 3. Правила для полиции</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">3.1. NonRP Cuff</span></div>
+                        <div class="rule-text">Надевание наручников (кафф) без RP-причины. (Исключение: разрешен фарм ХП с согласия игрока).</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">3.2. Проверка без оснований</span></div>
+                        <div class="rule-text">Просмотр планшета/КПК без веских оснований.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">3.3. Cuff ради мести</span></div>
+                        <div class="rule-text">Надевание наручников с целью помешать или отомстить игроку.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 3 дня</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">3.4. NonRP Tazer</span></div>
+                        <div class="rule-text">Использование тайзера без надлежащих RP-причин.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан от 6 часов до 2 дней</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">3.5. Tazer в ЗЗ</span></div>
+                        <div class="rule-text">Применение тайзера в Зелёной Зоне без причин.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 1–2 дня</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">3.6. Превышение силы</span></div>
+                        <div class="rule-text">Применение физической силы или спецсредств без необходимости.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> 6000€ либо Бан 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">3.7. Преступные действия</span></div>
+                        <div class="rule-text">Ограбления и совершение преступлений от лица гос. сотрудника.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Снятие с должности</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 4 -->
+        <div class="article-block" id="art4" data-category="art4">
+            <h2 class="article-title"><i class="fa-solid fa-user-ninja"></i> Статья 4. Внешний вид / Скин персонажа</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">4.1. Соответствие роли</span></div>
+                        <div class="rule-text">Одежда персонажа должна соответствовать его роли (Пример: прокурор обязан находиться в соответствующей форме).</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-info-circle"></i> Предупреждение</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">4.2. Скины животных</span></div>
+                        <div class="rule-text">Все скины животных полностью запрещены.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Предупреждение / Бан 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">4.3. Провокационные скины</span></div>
+                        <div class="rule-text">Скин, провоцирующий людей на розжиг межнациональной розни, строго запрещен.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Перманентный бан</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 5 -->
+        <div class="article-block" id="art5" data-category="art5">
+            <h2 class="article-title"><i class="fa-solid fa-user-shield"></i> Статья 5. Взаимодействие с администрацией</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">5.1. Оскорбление адм.</span></div>
+                        <div class="rule-text">Оскорбление членов администрации в любой чат/соцсети.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан на 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">5.2. Неуважение</span></div>
+                        <div class="rule-text">Проявление неуважительного отношения к администраторам.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан на 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">5.3. Троллинг</span></div>
+                        <div class="rule-text">Троллинг или систематическое перебивание администрации.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан на 3 дня</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">5.4. Обращение без приписки</span></div>
+                        <div class="rule-text">Обращение к администрации, когда у них нет NonRP приписки, запрещено.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-info-circle"></i> Запрещено</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 6 -->
+        <div class="article-block" id="art6" data-category="art6">
+            <h2 class="article-title"><i class="fa-solid fa-car"></i> Статья 6. Правила дорожного движения (ПДД)</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.1. Скоростной режим</span></div>
+                        <div class="rule-text">В городах — до 60 км/ч. На шоссе — до 120 км/ч. На парковках и спавнах — до 30 км/ч.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 1 500€ – 5 000€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.2. Полосы и встреча</span></div>
+                        <div class="rule-text">Запрещен выезд на встречку без цели обгона, разворот через сплошную, езда по газонам и обочинам.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> 3 000€ / Изъятие В/У</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.3. Спецтранспорт</span></div>
+                        <div class="rule-text">При приближении авто с маячками и сиреной (Полиция, Скорая, МЧС) перестроиться вправо и пропустить.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 4 000€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.4. Светофоры</span></div>
+                        <div class="rule-text">Проезд на красный свет, игнорирование знака «STOP» и помеха главной дороге запрещены.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 2 000€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.5. ДТП и скрытие</span></div>
+                        <div class="rule-text">Водители обязаны оформить Европротокол/вызвать полицию. Попытка скрыться даёт право объявить в розыск.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> 6 000€ + Эвакуация ТС</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.6. Опасное вождение</span></div>
+                        <div class="rule-text">Подрезания, резкое торможение перед ТС, дрифт и «шашки» по полосам в городе запрещены.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> 5 000€ / Конфискация 24ч</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.7. Парковка</span></div>
+                        <div class="rule-text">Запрещена остановка на дороге (без аварийки), перед гос. зданиями, на газонах, перекрёстках, мостах.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> 2 500€ + Эвакуация</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.8. Состояние ТС</span></div>
+                        <div class="rule-text">Езда на разбитом ТС (без дверей/капота, со дымящимся двигателем или пробитыми колесами) = NonRP.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> 2 000€ + Эвакуация</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.9. Номера / Тонировка</span></div>
+                        <div class="rule-text">Езда без гос. номеров или с глухой тонировкой лобового стекла.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 3 500€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">6.10. Пьяное вождение</span></div>
+                        <div class="rule-text">Вождение ТС под воздействием алкоголя или наркотических веществ.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> 8 000€ + Лишение В/У</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 7 -->
+        <div class="article-block" id="art7" data-category="art7">
+            <h2 class="article-title"><i class="fa-solid fa-tree"></i> Статья 7. Зеленая зона (Green Zone)</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">7.1. Оружие в ЗЗ</span></div>
+                        <div class="rule-text">Нахождение с оружием в зеленой зоне (Исключение: силовые гос. сотрудники).</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Предупреждение / Бан 1 день</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">7.2. Драки / Провокации</span></div>
+                        <div class="rule-text">Начинать драку или провоцировать конфликт в зеленой зоне.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан на 2 дня</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">7.3. Уход в ЗЗ</span></div>
+                        <div class="rule-text">Намеренный уход от погони или перестрелки в Зеленую Зону.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан на 3 дня</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">7.4. Стрельба / Взрывы</span></div>
+                        <div class="rule-text">Открытие огня в ЗЗ, бросание дымовых шашек, гранат или закладывание С4.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 7д / Перманентно (C4)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 8 -->
+        <div class="article-block" id="art8" data-category="art8">
+            <h2 class="article-title"><i class="fa-solid fa-mask"></i> Статья 8. Правила похищения и захвата</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">8.1. Состав группы</span></div>
+                        <div class="rule-text">Любое похищение проводится группой минимум из двух человек.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Соло: Бан на 2 дня</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">8.2. Требования к жертве</span></div>
+                        <div class="rule-text">Запрещено требовать что-либо у жертвы. Нужно вызвать переговорщика. В случае неприбытия — вы вправе делать с жертвой что угодно.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-info-circle"></i> См. регламент</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">8.3. Захваты / Теракты</span></div>
+                        <div class="rule-text">Сообщать администрации заранее. Группа должна состоять минимум из 4 вооруженных человек.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Без уведомления: Бан 7д</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">8.4. Похищение переговорщика</span></div>
+                        <div class="rule-text">Категорически запрещено похищать самого переговорщика.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 12 часов</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">8.5. Похищение в ЗЗ</span></div>
+                        <div class="rule-text">Запрещено производить похищения людей в Зеленой Зоне.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Строго запрещено</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 9 -->
+        <div class="article-block" id="art9" data-category="art9">
+            <h2 class="article-title"><i class="fa-solid fa-key"></i> Статья 9. Правила использования отмычек</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">9.1. Отмычки в ЗЗ</span></div>
+                        <div class="rule-text">Использование отмычек в Зеленой Зоне.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 5 дней</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">9.2. Без отыгровки</span></div>
+                        <div class="rule-text">Использование отмычек без надлежащих RP отыгровок.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 2 дня</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">9.3. В служебном авто</span></div>
+                        <div class="rule-text">Использование отмычек, когда человек находится внутри служебного ТС.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 3 дня</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">9.4. Во время проц. действий</span></div>
+                        <div class="rule-text">Использование отмычек во время проведения процессуальных действий.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Бан 2 дня</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 10 -->
+        <div class="article-block" id="art10" data-category="art10">
+            <h2 class="article-title"><i class="fa-solid fa-building-shield"></i> Статья 10. КПП / Блокпост</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">10.1. Игнорирование остановки</span></div>
+                        <div class="rule-text">Игнорирование требования остановки транспортного средства на КПП.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 5 000€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">10.2. Оружие на КПП</span></div>
+                        <div class="rule-text">Использование или демонстрация оружия на КПП.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 8 000€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">10.3. Отказ от документов</span></div>
+                        <div class="rule-text">Отказ от предъявления документов по требованию на блокпосту.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 6 000€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">10.4. Проверка без причины</span></div>
+                        <div class="rule-text">Проверка транспорта полицейскими без веской RP-причины.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> Наказуемо</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 11 -->
+        <div class="article-block" id="art11" data-category="art11">
+            <h2 class="article-title"><i class="fa-solid fa-scale-balanced"></i> Статья 11. Процессуальный кодекс</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">11.1. Непредставление</span></div>
+                        <div class="rule-text">Сотрудник не представился при обращении/задержании.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 3 500€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">11.2. Права Миранды</span></div>
+                        <div class="rule-text">Незачитание прав задерживаемому (Миранда).</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 5 000€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">11.3. Отсутствие записи</span></div>
+                        <div class="rule-text">Отсутствие видеозаписи факта нарушения со стороны сотрудника.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 4 000€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">11.4. Отсутствие улик</span></div>
+                        <div class="rule-text">Полное отсутствие доказательств вины гражданина.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 7 000€</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">11.5. Состав преступления</span></div>
+                        <div class="rule-text">Отсутствие состава (1. дата/время; 2. кто задержал; 3. обстоятельства; 4-5. статьи). При отсутствии судьи суд может провести прокурор. При >3 нарушений — отпустить задержанного.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-money-bill"></i> Штраф 4 500€</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 12 -->
+        <div class="article-block" id="art12" data-category="art12">
+            <h2 class="article-title"><i class="fa-solid fa-skull"></i> Статья 12. Тяжкие преступления</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">12.1 – 12.6. Перечень ограблений</span></div>
+                        <div class="rule-text">Ограбление банка, ювелирного магазина, сейфов, контейнеров, заправок, магазинов, торговых банкоматов.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-triangle-exclamation"></i> Тяжкое преступление</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">12.7. Убийство</span></div>
+                        <div class="rule-text">Убийство человека или представителя власти при исполнении.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-triangle-exclamation"></i> Высшая мера</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статья 13 -->
+        <div class="article-block" id="art13" data-category="art13">
+            <h2 class="article-title"><i class="fa-solid fa-gun"></i> Статья 13. Оружие и лицензии</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">§13.0. Без лицензии</span></div>
+                        <div class="rule-text">Использование и ношение оружия без имеющейся лицензии.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> 3000€ / 10 мин КПЗ</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">§13.1. Открытое ношение</span></div>
+                        <div class="rule-text">Открытое ношение оружия в общественных местах.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> 5000€ / 15 мин КПЗ</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">§13.2. Оружие в людном месте</span></div>
+                        <div class="rule-text">Использование оружия в людном месте без веских оснований.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> 7000€ / 15 мин КПЗ</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">§13.3. Передача оружия</span></div>
+                        <div class="rule-text">Передача огнестрельного оружия третьим лицам.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> 5000€ / 10 мин КПЗ</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">§13.4. Нападение на госслужащего</span></div>
+                        <div class="rule-text">Вооруженное или физическое нападение на государственного служащего.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> КПЗ 30 минут</div>
+                </div>
+                <div class="rule-card">
+                    <div>
+                        <div class="rule-header"><span class="rule-num">§13.5. Сопротивление с оружием</span></div>
+                        <div class="rule-text">Использование огнестрельного оружия с целью оказания сопротивления при задержании.</div>
+                    </div>
+                    <div class="rule-penalty"><i class="fa-solid fa-gavel"></i> КПЗ 25 минут</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">Правило скопировано!</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">NEVSKY<span>RP</span></div>
+            <div class="copyright">Все права защищены NevskyRp &copy; 2026</div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // --- Scroll Animations (Intersection Observer) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.article-block').forEach(block => {
+            observer.observe(block);
+        });
+
+        // --- Live Search Functionality ---
+        const searchInput = document.getElementById('searchInput');
+        const ruleCards = document.querySelectorAll('.rule-card');
+        const articleBlocks = document.querySelectorAll('.article-block');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            articleBlocks.forEach(block => {
+                let hasVisibleCards = false;
+                const cards = block.querySelectorAll('.rule-card');
+
+                cards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        card.style.display = 'flex';
+                        hasVisibleCards = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (hasVisibleCards) {
+                    block.style.display = 'block';
+                    block.classList.add('visible');
+                } else {
+                    block.style.display = 'none';
+                }
+            });
+        });
+
+        // --- Category Filter Buttons ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                articleBlocks.forEach(block => {
+                    if (filter === 'all' || block.getAttribute('data-category') === filter) {
+                        block.style.display = 'block';
+                        // Сброс поиска внутри категории
+                        block.querySelectorAll('.rule-card').forEach(c => c.style.display = 'flex');
+                        setTimeout(() => block.classList.add('visible'), 50);
+                    } else {
+                        block.style.display = 'none';
+                        block.classList.remove('visible');
+                    }
+                });
+            });
+        });
+
+        // --- Copy Rule on Click ---
+        ruleCards.forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                const title = card.querySelector('.rule-num').innerText;
+                const desc = card.querySelector('.rule-text').innerText;
+                const penalty = card.querySelector('.rule-penalty').innerText;
+                
+                const fullText = `${title} - ${desc} | Наказание: ${penalty}`;
+                navigator.clipboard.writeText(fullText).then(() => {
+                    showToast(`Скопировано: ${title}`);
+                });
+            });
+        });
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // --- Active Nav Link on Scroll ---
+        window.addEventListener('scroll', () => {
+            let current = '';
+            articleBlocks.forEach(block => {
+                const blockTop = block.offsetTop;
+                const blockHeight = block.clientHeight;
+                if (pageYOffset >= (blockTop - 200)) {
+                    current = block.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === `#${current}`) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
